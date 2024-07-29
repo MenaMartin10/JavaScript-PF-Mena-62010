@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de jugadores (PRUEBA)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="simuladorf">
+            <div class="simfutbol">
+                <div><h1>Simulador de fútbol (DEMO)</h1></div>
+                <div>
+                    <form id="formJugador">
+                        <input type="text" placeholder="Nombre" id="nombre">
+                        <input type="number" placeholder="Edad" id="edad">
+                        <div><button id="agregarJ" type="submit">Agregar Jugador</button></div>
+                    </form>
+                </div>
+    
+                <div class="opciones">
+                    <div><button id="buscarJugador" class="opcion">Buscar Jugador</button></div>
+                    <div><button id="eliminarJugador" class="opcion">Eliminar Jugador</button></div>
+                    <div><button id="calcularEdadPromedio" class="opcion">Calcular Edad Promedio</button></div>
+                    <div><button id="eliminarTodosJugadores" class="opcion">Eliminar Todos los Jugadores</button></div>
+                </div>
+    
+                <div class="lista">
+                    <h2>Lista de Jugadores</h2>
+                    <ul id="listaJugadores"></ul>
+                </div>
+    
+                <span id="edadp"><p id="edadPromedio"></p></span>
+            </div>
+    
+            <div class="imglogo"><img src="./images/plogo.png" alt=""></div>
+    
+            <div id="darkModeToggle">
+                <div class="toggle-circle">
+                    <span id="sunIcon" class="material-icons">wb_sunny</span>
+                    <span id="moonIcon" class="material-icons">nightlight_round</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<main>
+    <div class="galeriac">
+        <div>
+            <h2 class="galeriap">Comprá tus Productos</h2>
+            <div id="galeriaProductos">
+                <div class="producto" data-id="1">
+                    <div class="producto-imagen">
+                        <div class="carousel">
+                            <img src="./images/camiseta.jpeg" alt="Camiseta">
+                            <img src="./images/camiseta2.jpeg" alt="Camiseta" style="display:none;">
+                        </div>
+                        <span class="ver-mas">Ver más</span>
+                    </div>
+                    <h3>Camiseta</h3>
+                    <p>Precio: $45.000</p>
+                    <button class="agregarCarrito">Agregar al carrito</button>
+                </div>
+                <div class="producto" data-id="2">
+                    <div class="producto-imagen">
+                        <div class="carousel">
+                            <img src="./images/botinesnik.jpeg" alt="Botines Nike">
+                        </div>
+                        <span class="ver-mas">Ver más</span>
+                    </div>
+                    <h3>Botines Nike</h3>
+                    <p>Precio: $170.000</p>
+                    <button class="agregarCarrito">Agregar al carrito</button>
+                </div>
+                <div class="producto" data-id="3">
+                    <div class="producto-imagen">
+                        <div class="carousel">
+                            <img src="./images/pelota.jpeg" alt="Pelota">
+                            <img src="./images/pelota2.jpeg" alt="Pelota" style="display:none;">
+                        </div>
+                        <span class="ver-mas">Ver más</span>
+                    </div>
+                    <h3>Pelota</h3>
+                    <p>Precio: $15.000</p>
+                    <button class="agregarCarrito">Agregar al carrito</button>
+                </div>
+                <div class="producto" data-id="4">
+                    <div class="producto-imagen">
+                        <div class="carousel">
+                            <img src="./images/pantalon.jpeg" alt="Short">
+                            <img src="./images/pantalon2.jpeg" alt="Short" style="display:none;">
+                        </div>
+                        <span class="ver-mas">Ver más</span>
+                    </div>
+                    <h3>Short</h3>
+                    <p>Precio: $30.000</p>
+                    <button class="agregarCarrito">Agregar al carrito</button>
+                </div>
+                <div class="producto" data-id="5">
+                    <div class="producto-imagen">
+                        <div class="carousel">
+                            <img src="./images/medias.jpeg" alt="Medias">
+                            <img src="./images/medias2.jpeg" alt="Medias" style="display:none;">
+                        </div>
+                        <span class="ver-mas">Ver más</span>
+                    </div>
+                    <h3>Medias</h3>
+                    <p>Precio: $11.000</p>
+                    <button class="agregarCarrito">Agregar al carrito</button>
+                </div>
+                <div class="producto" data-id="6">
+                    <div class="producto-imagen">
+                        <div class="carousel">
+                            <img src="./images/botinesad.jpg" alt="Botines Adidas">
+                        </div>
+                        <span class="ver-mas">Ver más</span>
+                    </div>
+                    <h3>Botines Adidas</h3>
+                    <p>Precio: $280.000</p>
+                    <button class="agregarCarrito">Agregar al carrito</button>
+                </div>
+                <div class="producto" data-id="7">
+                    <div class="producto-imagen">
+                        <div class="carousel">
+                            <img src="./images/canilleras.jpg" alt="Canilleras">
+                        </div>
+                        <span class="ver-mas">Ver más</span>
+                    </div>
+                    <h3>Canilleras</h3>
+                    <p>Precio: $7.000</p>
+                    <button class="agregarCarrito">Agregar al carrito</button>
+                </div>
+                <div class="producto" data-id="8">
+                    <div class="producto-imagen">
+                        <div class="carousel">
+                            <img src="./images/campera.jpg" alt="Campera">
+                        </div>
+                        <span class="ver-mas">Ver más</span>
+                    </div>
+                    <h3>Campera</h3>
+                    <p>Precio: $110.000</p>
+                    <button class="agregarCarrito">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section>
+        <div class="tituloAfa">
+        <div><h1>Selección Argentina</h1></div>
+        <div><img src="./images/EscudoSeleccionOficial.png" alt=""></div>
+         </div>
+    <div class="container">
+        <div>
+        <h1>Juego de Memoria</h1>
+        <div id="memory-game" class="memory-game"></div>
+      </div>
+
+      <div class="jugador-info">
+        <div>
+            <h1>Selecciona un Jugador</h1>
+        </div>
+        <div>
+        <select id="seleccionarJugador">
+            <option value="">Selecciona un jugador</option>
+        </select>
+        </div>
+        <div id="jugadorCard" class="jugador-card" style="display: none;">
+        </div>
+    </div>
+    </div>
+    </section>
+
+    <div class="jugadorFutbolPNG">
+        <div class="jugadorp"><img src="./images/player.png" alt=""></div>
+        <div class="pelotap"><img src="./images/plogo.png" alt=""></div>
+    </div>
+
+    <div><h1>API</h1></div>
+    <div><h1>Jugadores de fútbol de todo el mundo</h1></div>
+    <div><p>Ingrese un número ID</p></div>
+   <form id="searchPlayerForm">
+    <div>
+    <input type="text" id="playerId" placeholder="Ingrese el ID del jugador" required>
+   </div>
+    <div>
+    <button type="submit">Buscar</button>
+   </div>
+   </form>
+
+<div id="playersContainer"></div>
+
+
+</main>
+
+<div id="bienvenidaModal" class="modal">
+    <div class="modal-content">
+        <div class="bienvenidaAndImg">
+            <h2 id="bienvenido">Bienvenido al Simulador de Fútbol</h2>
+            <div class="imgBienvenida"><img src="./images/plogo.png" alt=""></div>
+        </div>
+        <button id="entrarBtn">Entrar</button>
+    </div>
+</div>
+
+<div id="carritoIcono">
+    <i class="fas fa-shopping-cart"></i>
+    <span id="cantidadCarrito">0</span>
+</div>
+<div id="carritoOverlay">
+    <div id="carritoPanel">
+        <span id="cerrarCarritoOverlay">X</span>
+        <div id="carritoContenido">
+            <div id="carritoCompras"></div>
+        </div>
+        <button id="limpiarCarrito">Limpiar Carrito</button>
+        <p id="totalCarrito"></p>
+        <button id="comprarCarrito">Comprar</button>
+    </div>
+</div>
+
+<div id="imagenModal" class="imagenzoom">
+    <span class="cerrarModal">&times;</span>
+    <img class="modal-content2" id="imgGrande">
+    <div id="caption"></div>
+    <button id="prevImg" class="navBtn">❮</button>
+    <button id="nextImg" class="navBtn">❯</button>
+</div>
+
+<div id="confirmModal" class="modalCarrito">
+    <div class="modalContentCarrito">
+        <h4>Confirmación</h4>
+        <p>¿Seguro que quieres limpiar el carrito?</p>
+        <div class="modalFooterCarrito">
+            <button id="cancelBtn" class="modal-close btn">Cancelar</button>
+            <button id="confirmBtn" class="modal-close btn">Confirmar</button>
+        </div>
+    </div>
+</div>
+
+<div id="purchaseModal" class="modalCarrito">
+    <div class="modalContentCarrito">
+        <p>Compra realizada con éxito. ¡Gracias por tu compra!</p>
+        <div class="modalFooterCarrito">
+            <button id="closePurchaseModal" class="modal-close btn">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2024 Mena Martín. Todos los derechos reservados.</p>
+</footer>
+
+
+<script src="./js/main.js"></script>
+</body>
+</html>

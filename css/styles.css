@@ -1,0 +1,1358 @@
+@import url("https://fonts.googleapis.com/css2?family=Anta&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Julius+Sans+One&family=Marvel:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(27, 27, 37);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-family: "Anta", sans-serif;
+    text-align: center;
+    margin: 50px;
+    overflow-x: hidden;
+}
+
+#carritoIcono {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgb(27, 27, 37);
+    color: #ffffffa4;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 0.5px solid #ffffff48;
+    transition: 0.3s;
+}
+
+.dark-mode #carritoIcono{
+    background: white;
+    color: rgb(27, 27, 37);
+    border: 1px solid #000000;
+}
+
+.dark-mode #carritoIcono:hover{
+    background: rgba(255, 255, 255, 0.904);
+    color: rgb(27, 27, 37);
+    border: 1px solid #000000;
+    padding: 16px;
+}
+
+#carritoIcono:hover {
+    background-color: #000000af;
+    color: #ffffff;
+    padding: 16px;
+}
+
+#carritoIcono i {
+    font-size: 1.5rem;
+}
+
+#cantidadCarrito {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #000000af;
+    color: #ffffff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+#carritoOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.911);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(-50%, -100%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+#carritoOverlay.active {
+    display: block;
+}
+
+
+#carritoPanel {
+    background: #1b1b25;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 30%;
+    max-height: 80%;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+#carritoContenido {
+    overflow-y: auto;
+    flex-grow: 1;
+    scrollbar-width: thin;
+    scrollbar-color: #000000af #1b1b25;
+}
+
+#carritoCompras {
+    list-style-type: none;
+    padding: 0;
+}
+
+#carritoCompras li {
+    background-color: #000000af;
+    border: 1px solid #ffffff46;
+    border-radius: 5px;
+}
+
+#totalCarrito {
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 30px;
+    text-align: center;
+    overflow: hidden;
+}
+
+#limpiarCarrito {
+    background-color: #02020200;
+    margin-top: 10px;
+    align-self: center;
+    overflow: hidden;
+    padding: 10px 10px 18px 10px;
+}
+
+#comprarCarrito{
+    background-color: #000000af;
+    padding: 20px;
+    margin-top: 10px;
+    text-align: center;
+    overflow: hidden;
+}
+
+#cerrarCarritoOverlay {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 15px;
+    background-color: rgb(27, 27, 37);
+    border-radius: 100%;
+    border: 1px solid #ffffff45;
+    padding: 5px;
+    color: #fff;
+    transition: 0.3s;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+#cerrarCarritoOverlay:hover {
+    color: #ffffffa4;
+}
+
+h1 {
+    margin: 50px;
+}
+
+input {
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.texto-color {
+    color: rgb(190, 190, 190);
+    text-decoration: underline;
+}
+
+button {
+    font-family: "Anta", sans-serif;
+    background: rgb(27, 27, 37);
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: 1px solid #ffffff2f;
+}
+
+button:hover {
+    color: #ffffffa4;
+}
+
+.simuladorf {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    background-color: #000000af;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 30px;
+    
+    overflow: hidden;
+    transition: transform 0.5s, background-color 0.5s;
+}
+
+.galeriac {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    background-color: #000000af;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 30px;
+    
+    transition: transform 0.5s, background-color 0.5s;
+}
+
+.simuladorf img {
+    opacity: 0.5;
+    animation: spin 15s linear infinite;
+    filter: drop-shadow(5px 5px 10px rgba(255, 255, 255, 0.6));
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.imglogo {
+    overflow-x: visible;
+}
+
+#galeriaProductos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.producto {
+    background-color: #000000af;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    width: 300px;
+    transition: 0.2s;
+    border: 1px solid #ffffff48;
+}
+
+.producto img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.producto h3 {
+    margin: 10px 0;
+}
+
+.producto p {
+    margin-bottom: 10px;
+}
+
+.producto button {
+    background: rgb(27, 27, 37);
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid #ffffff46;
+}
+
+.producto button:hover {
+    color: #ffffffa4;
+}
+
+#agregarJ{
+    margin-top: 20px;
+}
+
+.lista {
+    background: rgb(27, 27, 37);
+    padding: 20px;
+    margin: 30px;
+    border: 1px solid #ffffff46;
+    border-radius: 5px;
+}
+
+#listaJugadores {
+    list-style-type: none;
+    padding: 0;
+}
+
+#listaJugadores li {
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
+
+.edad-color {
+    color: rgb(190, 190, 190);
+    font-weight: bold;
+}
+
+#edadPromedio {
+    font-weight: bold;
+    padding: 10px;
+    transition: height 1s ease, opacity 1s ease;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+#edadPromedio.mostrar {
+    background-color: rgb(27, 27, 37);
+    border-radius: 10px;
+    max-height: 100px; 
+    opacity: 1;
+}
+
+.producto-imagen {
+    position: relative;
+    cursor: pointer;
+}
+
+.producto-imagen img {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.producto-imagen:hover img {
+    filter: brightness(70%);
+}
+
+.ver-mas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; 
+    font-size: 15px;
+    font-weight: bold;
+    display: none;
+    padding: 0;
+}
+
+.producto-imagen:hover .ver-mas {
+    display: block;
+}
+
+.producto-imagen .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 10px;
+}
+
+.producto-imagen:hover .overlay {
+    opacity: 1;
+}
+
+.galeriap{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.911);
+    backdrop-filter: blur(10px);
+    align-content: center;
+}
+
+.modal-content {
+    background: rgba(27, 27, 37);
+    margin: 150px auto;
+    padding: 80px;
+    border-radius: 15px;
+    position: relative;
+    width: 80%;
+    max-width: 500px;
+}
+
+.modal-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+#bienvenido{
+    font-size: large;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+    display: none;
+    cursor: pointer;
+    transition: 0.6s ease;
+}
+
+.overlay:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#entrarBtn {
+    background-color: #000000af;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.imgBienvenida{
+    overflow: hidden;
+}
+
+.imgBienvenida img{
+    margin-top: 50px;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    animation: rotate 3s infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(80deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-80deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.error-mensaje, .exito-mensaje {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1000;
+    border: 1px solid #ffffff48;
+    overflow: hidden;
+}
+
+.error-mensaje {
+    background: rgba(27, 27, 37);
+    border: 1px solid #ff000048;
+    color: white;
+}
+
+.exito-mensaje {
+    background: rgba(27, 27, 37);
+    border: 1px solid #51ff0048;
+    color: white;
+}
+
+.error-mensaje.mostrar, .exito-mensaje.mostrar {
+    opacity: 1;
+}
+
+.cerrar-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: #000000af;
+    border: 1px solid #ffffff46;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cerrar-btn:hover {
+    color: #ddd;
+}
+
+#cerrarEdadPromedio {
+    border: none;
+    margin-left: 10px;
+    background: #00000000;
+    cursor: pointer;
+}
+
+#formJugador {
+    margin-bottom: 20px;
+}
+
+.opcion {
+    width: 50%;
+    height: 40px;
+}
+
+input::placeholder {
+    color: rgb(27, 27, 37);
+}
+
+.imagenzoom {
+    display: none;
+    align-content: center;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.modal-content2 {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    border-radius: 10px;
+}
+
+.cerrarModal {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.cerrarModal:hover,
+.cerrarModal:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#caption {
+    display: none;
+}
+
+#imagenModal .modal-content2 {
+    transition: transform 0.5s ease;
+    transform: translateX(0);
+}
+
+#imagenModal.touch-moving .modal-content2 {
+    transition: none;
+}
+
+.navBtn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    user-select: none;
+}
+
+#prevImg {
+    background-color: rgba(0, 0, 0, 0.8);
+    left: calc(10% - 30px); 
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#nextImg {
+    background-color: rgba(0, 0, 0, 0.8);
+    right: calc(10% - 30px); 
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.navBtn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.zoomBtn {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 0.5s;
+    padding: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 10px;
+    border-radius: 10px;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.touch-container {
+    display: flex;
+    overflow: hidden;
+}
+
+.touch-container img {
+    min-width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.modalCarrito {
+    display: none; 
+    position: fixed;
+    align-content: center; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.979);
+}
+
+.modalContentCarrito {
+    background: rgba(27, 27, 37);
+    border-radius: 10px;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+}
+
+#confirmModal{
+    align-content: center;
+}
+
+.modalFooterCarrito {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 10px;
+}
+
+.modalFooterCarrito .btn {
+    background-color: #000000af;
+    margin-left: 10px;
+}
+
+#darkModeToggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    background-color: #000000af;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.8s, background-color 0.8s;
+    overflow: hidden;
+    border: 1px solid #ffffff46;
+}
+
+.dark-mode #darkModeToggle {
+    background-color: #c7c7c7;
+    border: 1px solid #00000046;
+}
+
+.toggle-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    position: relative;
+    left: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.8s, background-color 0.8s;
+}
+
+#sunIcon, #moonIcon {
+    font-size: 1.5rem;
+    position: absolute;
+    transition: opacity 0.3s;
+    background: none;
+}
+
+#sunIcon {
+    color: #ffffff;
+}
+
+#moonIcon {
+    color: #000000;
+    opacity: 0;
+}
+
+.dark-mode .toggle-circle {
+    transform: translateX(30px);
+}
+
+.dark-mode #sunIcon {
+    opacity: 0;
+}
+
+.dark-mode #moonIcon {
+    opacity: 1;
+}
+
+#darkModeToggle:hover {
+    color: #ffffff;
+}
+
+.dark-mode {
+    background-color: rgb(27, 27, 37);
+    color: #eee;
+}
+
+.dark-mode .simuladorf,
+.dark-mode .galeriac {
+    background-color: #ffffff;
+    color: #000000;
+    transition: background-color 0.8s, border 1s;
+}
+
+.dark-mode .galeriac h2{
+    background-color: #00000000;
+    color:  rgb(27, 27, 37);
+}
+
+.dark-mode #carritoPanel {
+    background-color: #ffffff;
+    transition: background-color 0.8s, border 1s;
+}
+
+.dark-mode #carritoPanel li,
+.dark-mode #comprarCarrito,
+.dark-mode #limpiarCarrito {
+    background: rgb(27, 27, 37);
+    transition: background-color 0.8s;
+}
+
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode span,
+.dark-mode button {
+    background: rgb(27, 27, 37);
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.8s;
+}
+
+.dark-mode .producto,
+.dark-mode p {
+    background: rgb(27, 27, 37);
+    border-radius: 5px;
+    color: white;
+    transition: background-color 0.8s;
+}
+
+.dark-mode .ver-mas {
+    color: #ffffff;
+    box-shadow: #1b1b25;
+    transition: 0.8s;
+}
+
+.dark-mode #bienvenido{
+    background-color: white;
+    color: rgb(27, 27, 37);
+}
+
+.dark-mode #entrarBtn{
+    background-color: rgb(27, 27, 37);
+    color: white;
+}
+
+.dark-mode #entrarBtn:hover{
+    color: #b6b6b6;
+}
+
+.dark-mode .cerrar-btn,  
+.dark-mode .cerrarModal, 
+.dark-mode .zoomBtn {
+    background: #444;
+    color: #ccc;
+}
+
+.dark-mode #cerrarCarritoOverlay{
+    background: white;
+    color: rgb(27, 27, 37);
+    border: 1px solid black;
+}
+
+.dark-mode #cerrarCarritoOverlay:hover{
+    background-color: none;
+    color: rgba(27, 27, 37, 0.541);
+}
+
+.dark-mode .cerrar-btn:hover,  
+.dark-mode .cerrarModal:hover, 
+.dark-mode .zoomBtn:hover {
+    background: #555;
+    color: #eee;
+}
+
+.dark-mode .imglogo img {
+    filter: invert(10%) sepia(50%) saturate(500%) hue-rotate(183deg) brightness(64%) contrast(90%) drop-shadow(5px 37px 10px rgba(0, 0, 0, 0.6));
+}
+
+.dark-mode .modalContentCarrito{
+    background-color: white;
+}
+
+.dark-mode div:where(.swal2-container).swal2-center>.swal2-popup{
+    background-color: white;
+    color: rgb(27, 27, 37);
+}
+
+.dark-mode :where(.swal2-icon).swal2-success{
+    overflow: hidden;
+    border-color: rgb(27, 27, 37);
+}
+
+.dark-mode :where(.swal2-icon).swal2-success [class^=swal2-success-line] {
+    background-color: rgb(27, 27, 37);
+}
+
+.dark-mode div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm){
+    background-color: rgb(27, 27, 37);
+}
+
+.dark-mode .modal-content{
+    background-color:white;
+}
+
+button.swal2-confirm.swal2-styled{
+    border: 1px solid #ffffff46;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm){
+    background: rgb(0, 0, 0);
+    color: white;
+}
+
+div:where(.swal2-container).swal2-center>.swal2-popup{
+    background-color: rgb(27, 27, 37);
+    color: rgb(255, 255, 255);
+}
+
+div:where(.swal2-icon).swal2-success{
+    overflow: hidden;
+    border-color: #ffffffaf;
+}
+
+div:where(.swal2-icon).swal2-success [class^=swal2-success-line] {
+    background-color: #ffffffaf;
+}
+
+div:where(.swal2-container).swal2-center>.swal2-popup{
+    padding: 30px;
+    text-align: center;
+    align-items: center;
+}
+
+.jugadorFutbolPNG{
+    display: flex;
+    justify-content: center;
+}
+
+.jugadorp img{
+    width: 200px;
+    filter: invert(1);
+    opacity: 0.9;
+    margin-top: 100px;
+}
+
+.pelotap img {
+    position: relative;
+    top: 260px;
+    width: 35px;
+    animation: spin 3s linear infinite;
+}
+
+section {
+    display: block;
+    background-color: #000000af;
+    border-radius: 30px;
+    padding: 100px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.container h2 {
+    margin: 50px 0px 50px 0px;
+}
+
+.container h1 {
+    margin: 50px 0px 50px 0px;
+}
+
+.tituloAfa img {
+    width: 130px;
+}
+
+.tituloAfa h1 {
+    margin: 0px 0px 50px 0px;
+}
+
+.memory-game {
+    display: grid;
+    grid-template-columns: repeat(7, 100px);
+    gap: 10px;
+    justify-content: center;
+}
+
+.memory-card {
+    width: 100px;
+    height: 150px;
+    position: relative;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+.memory-card.flip {
+    transform: rotateY(180deg);
+}
+.memory-card.matched .front-face,
+.memory-card.matched .back-face {
+    background-color: #00000000;
+    color: white;
+    transition: background-color 1s ease;
+}
+
+.memory-card.matched .player-name {
+    display: none;
+    transition: display 1s ease;
+}
+
+.memory-card .front-face,
+.memory-card .back-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.memory-card .back-face {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.memory-card .player-name {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 1px;
+    font-size: small;
+    width: 100%;
+}
+
+.jello-vertical {
+    animation: jello-vertical 0.9s linear both;
+}
+
+@keyframes jello-vertical {
+    0% {
+      transform: scale3d(1, 1, 1);
+    }
+    30% {
+      transform: scale3d(0.85, 1.15, 1);
+    }
+    40% {
+      transform: scale3d(1.15, 0.85, 1);
+    }
+    50% {
+      transform: scale3d(0.9, 1.1, 1);
+    }
+    65% {
+      transform: scale3d(1.1, 0.9, 1);
+    }
+    75% {
+      transform: scale3d(0.95, 1.05, 1);
+    }
+    100% {
+      transform: scale3d(1, 1, 1);
+    }
+}
+
+
+.jugador-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.jugador-info h2 {
+    margin: 50px;
+}
+
+.jugador-card {
+    width: 100%;
+    padding: 50px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.jugador-card h3 {
+    color: #ffffffaf;
+    margin: 20px;
+}
+
+.jugador-card img {
+    width: 60%;
+}
+
+.title-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.memory-card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.front-face,
+.back-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 5px;
+    align-content: center;
+    cursor: pointer;
+}
+
+.front-face {
+    background: url(../images/EscudoSeleccion.png);
+    background-color: #ffffff;
+    background-position: center;
+    background-size: cover;
+    color: rgba(255, 255, 255, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.back-face {
+    background-color: #ffffff;
+    color: rgb(27, 27, 37);
+    transform: rotateY(180deg);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#footballPlayersSection {
+    margin-top: 50px;
+}
+
+#searchPlayerForm input {
+    width: 200px;
+    margin-right: 10px;
+}
+
+#playersContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+#playersContainer div {
+    background-color: #000000af;
+    margin: 50px 0 0 0px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+#playersContainer p{
+    margin: 20px;
+    padding: 20px;
+}
+
+#playersContainer img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+footer p{
+    margin: 100px;
+}
+
+
+@media (max-width: 1460px) and (max-height: 1218px) {
+    #galeriaProductos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .container {
+        display: block;
+    }
+}
+
+@media (max-width: 1020px) and (max-height: 1218px) {
+    .galeriaProductos {
+        grid-template-columns: 1fr 1fr; 
+    }
+
+    .galeriaProductos .producto {
+        padding: 5px; 
+    }
+
+    .galeriaProductos img {
+        max-width: 100%; 
+        height: auto; 
+    }
+
+    .simuladorf img  {
+        width: 150px;
+        height: 150px;    
+    }
+
+    #carritoPanel {
+        width: 80%;
+    }
+
+    section{
+        display: block;
+    }
+
+    .container {
+        display: block;
+    }
+}
+
+@media (max-width: 708px) and (max-height: 1218px) {
+    body {
+        margin: 10px;
+    }
+    
+    .simuladorf img  {
+        width: 100px;
+        height: 100px;    
+    }
+
+    .simuladorf {
+        display: flex;
+        flex-direction: column-reverse; 
+        align-items: center; 
+        font-size: x-small;
+    }
+
+    #galeriaProductos {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .galeriac {
+        margin-top: 20px;
+    }
+
+    button {
+        font-size: x-small;
+    }
+
+    .imglogo {
+        margin-bottom: 20px; 
+    }
+
+    .bienvenidaAndImg{
+        display: block;
+    }
+
+    .imgBienvenida img{
+        width: 50px;
+        height: 50px;
+        margin-top: 50px;
+        
+    }
+
+    .modal {
+        backdrop-filter: blur(20px);
+    }
+
+    h2 {
+        font-weight: 100;
+        font-size: medium;
+    }
+
+    input {
+        margin: 15px;
+    }
+
+    .producto {
+        margin: 10px;
+    }
+
+    .exito-mensaje {
+        position: fixed;
+        background: rgba(27, 27, 37);
+        border: 1px solid #51ff0048;
+        color: white;
+        padding: 60px;
+        width: 60%;
+        font-size: x-small;
+    }
+
+    .error-mensaje {
+        position: fixed;
+        background: rgba(27, 27, 37);
+        border: 1px solid #ff000048;
+        color: white;
+        padding: 60px;
+        width: 60%;
+        font-size: x-small;
+    }
+
+    .cerrar-btn {
+        position: absolute;
+        top: auto;
+        right: 10px;
+        background: #000000af;
+        border: 1px solid #ffffff46;
+        color: white;
+        cursor: pointer;
+        font-size: 10px;
+    }
+
+    #formJugador {
+        display: block;
+    }
+
+    #galeriaProductos {
+        gap: 0;
+    }
+
+    #carritoPanel {
+        width: 80%;
+    }
+
+    #edadPromedio.mostrar{
+        border-radius: 0px;
+    }
+
+    .memory-game {
+        display: grid;
+        grid-template-columns: repeat(3, 100px); 
+    }
+
+    section{
+        display: block;
+    }
+
+    .jugador-card {
+        padding: 20px;
+        width: 300px;
+    }
+
+    .container {
+        display: block;
+    }
+
+}

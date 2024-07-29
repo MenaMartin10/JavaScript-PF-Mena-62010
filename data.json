@@ -1,0 +1,212 @@
+{
+    "jugadores": [
+        {
+            "nombre": "Emiliano",
+            "apellido": "Martínez",
+            "edad": 31,
+            "posición": "Arquero",
+            "numero": 23,
+            "img": "./images/DMartinez.png"
+        },
+        {
+            "nombre": "Franco",
+            "apellido": "Armani",
+            "edad": 37,
+            "posición": "Arquero",
+            "numero": 1,
+            "img": "./images/Armani.png"
+        },
+        {
+            "nombre": "Gerónimo",
+            "apellido": "Rulli",
+            "edad": 32,
+            "posición": "Arquero",
+            "numero": 12,
+            "img": "./images/Rulli.png"
+        },
+        {
+            "nombre": "Gonzalo",
+            "apellido": "Montiel",
+            "edad": 27,
+            "posición": "Defensor",
+            "numero": 4,
+            "img": "./images/Montiel.png"
+        },
+        {
+            "nombre": "Nahuel",
+            "apellido": "Molina",
+            "edad": 26,
+            "posición": "Defensor",
+            "numero": 26,
+            "img": "./images/Molina.png"
+        },
+        {
+            "nombre": "Cristian",
+            "apellido": "Romero",
+            "edad": 26,
+            "posición": "Defensor",
+            "numero": 13,
+            "img": "./images/Romero.png"
+        },
+        {
+            "nombre": "Germán",
+            "apellido": "Pezzella",
+            "edad": 32,
+            "posición": "Defensor",
+            "numero": 6,
+            "img": "./images/Pezzela.png"
+        },
+        {
+            "nombre": "Lucas",
+            "apellido": "Martínez Quarta",
+            "edad": 28,
+            "posición": "Defensor",
+            "numero": 2,
+            "img": "./images/Quarta.png"
+        },
+        {
+            "nombre": "Nicolás",
+            "apellido": "Otamendi",
+            "edad": 36,
+            "posición": "Defensor",
+            "numero": 19,
+            "img": "./images/Otamendi.png"
+        },
+        {
+            "nombre": "Lisandro",
+            "apellido": "Martínez",
+            "edad": 26,
+            "posición": "Defensor",
+            "numero": 25,
+            "img": "./images/LMartinez.png"
+        },
+        {
+            "nombre": "Marcos",
+            "apellido": "Acuña",
+            "edad": 32,
+            "posición": "Defensor",
+            "numero": 8,
+            "img": "./images/Acuña.png"
+        },
+        {
+            "nombre": "Nicolás",
+            "apellido": "Tagliafico",
+            "edad": 31,
+            "posición": "Defensor",
+            "numero": 3,
+            "img": "./images/Tagliafico.png"
+        },
+        {
+            "nombre": "Guido",
+            "apellido": "Rodríguez",
+            "edad": 29,
+            "posición": "Mediocampista",
+            "numero": 18,
+            "img": "./images/Rodriguez.png"
+        },
+        {
+            "nombre": "Leandro",
+            "apellido": "Paredes",
+            "edad": 30,
+            "posición": "Mediocampista",
+            "numero": 5,
+            "img": "./images/Paredes.png"
+        },
+        {
+            "nombre": "Alexis",
+            "apellido": "Mac Allister",
+            "edad": 25,
+            "posición": "Mediocampista",
+            "numero": 20,
+            "img": "./images/Mac.png"
+        },
+        {
+            "nombre": "Rodrigo",
+            "apellido": "De Paul",
+            "edad": 30,
+            "posición": "Mediocampista",
+            "numero": 7,
+            "img": "./images/DePaul.png"
+        },
+        {
+            "nombre": "Exequiel",
+            "apellido": "Palacios",
+            "edad": 25,
+            "posición": "Mediocampista",
+            "numero": 14,
+            "img": "./images/Palacios.png"
+        },
+        {
+            "nombre": "Enzo",
+            "apellido": "Fernández",
+            "edad": 23,
+            "posición": "Mediocampista",
+            "numero": 24,
+            "img": "./images/Fernandez.png"
+        },
+        {
+            "nombre": "Giovani",
+            "apellido": "Lo Celso",
+            "edad": 28,
+            "posición": "Mediocampista",
+            "numero": 16,
+            "img": "./images/LoCelso.png"
+        },
+        {
+            "nombre": "Ángel",
+            "apellido": "Di María",
+            "edad": 36,
+            "posición": "Delantero",
+            "numero": 11,
+            "img": "./images/DiMaria.png"
+        },
+        {
+            "nombre": "Lionel",
+            "apellido": "Messi",
+            "edad": 37,
+            "posición": "Delantero",
+            "numero": 10,
+            "img": "./images/Messi.png"
+        },
+        {
+            "nombre": "Valentín",
+            "apellido": "Carboni",
+            "edad": 19,
+            "posición": "Delantero",
+            "numero": 21,
+            "img": "./images/Carboni.png"
+        },
+        {
+            "nombre": "Alejandro",
+            "apellido": "Garnacho",
+            "edad": 20,
+            "posición": "Delantero",
+            "numero": 17,
+            "img": "./images/Garnacho.png"
+        },
+        {
+            "nombre": "Nicolás",
+            "apellido": "González",
+            "edad": 26,
+            "posición": "Delantero",
+            "numero": 15,
+            "img": "./images/Gonzalez.png"
+        },
+        {
+            "nombre": "Lautaro",
+            "apellido": "Martínez",
+            "edad": 26,
+            "posición": "Delantero",
+            "numero": 22,
+            "img": "./images/LMartinez.png"
+        },
+        {
+            "nombre": "Julián",
+            "apellido": "Álvarez",
+            "edad": 24,
+            "posición": "Delantero",
+            "numero": 9,
+            "img": "./images/Alvarez.png"
+        }
+    ]
+}
