@@ -1185,6 +1185,19 @@ footer p{
     margin: 100px;
 }
 
+.solicitar p{
+    margin: 50px 0px 50px 0px;
+}
+
+.solicitar a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.664);
+}
+
+.solicitar a:hover{
+    color: rgba(255, 255, 255, 0.247);
+}
+
 
 @media (max-width: 1460px) and (max-height: 1218px) {
     #galeriaProductos {
