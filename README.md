@@ -30,13 +30,16 @@ Ingresar un número ID. (Ejemplo, id: "44" te va a aparecer el jugador Cristiano
 
 Estructura de Archivos.
 ├── css/
-│   └── styles.css          
+│   └── styles.css     
+     
 ├── images/                 
 │   ├── player.png
 │   ├── camiseta.jpeg
 │   └── ... (otras imágenes)
+
 ├── js/
-│   └── main.js             
+│   └── main.js     
+        
 ├── data.json               
 ├── index.html       
 
