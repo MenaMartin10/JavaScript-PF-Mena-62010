@@ -21,7 +21,7 @@ body {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: rgb(27, 27, 37);
+    background: #1b1b25;
     color: #ffffffa4;
     padding: 15px;
     border-radius: 10px;
@@ -131,6 +131,11 @@ body {
     border-radius: 5px;
 }
 
+#carritoCompras li span{
+    max-width: 0%;
+}
+
+
 #totalCarrito {
     font-weight: bold;
     margin: 10px 0;
@@ -216,7 +221,7 @@ button:hover {
     padding-top: 50px;
     padding-bottom: 50px;
     border-radius: 30px;
-    
+    min-height: 100vh;
     overflow: hidden;
     transition: transform 0.5s, background-color 0.5s;
 }
@@ -232,7 +237,7 @@ button:hover {
     padding-top: 50px;
     padding-bottom: 50px;
     border-radius: 30px;
-    
+    min-height: 100vh;
     transition: transform 0.5s, background-color 0.5s;
 }
 
@@ -894,6 +899,11 @@ input::placeholder {
     background-color:white;
 }
 
+.dark-mode #floatingMessageBox{
+    background-color: white;
+    color: #1b1b25;
+}
+
 button.swal2-confirm.swal2-styled{
     border: 1px solid #ffffff46;
 }
@@ -947,6 +957,7 @@ section {
     background-color: #000000af;
     border-radius: 30px;
     padding: 100px;
+    min-height: 100vh;
 }
 
 .container {
@@ -1198,6 +1209,53 @@ footer p{
     color: rgba(255, 255, 255, 0.247);
 }
 
+#floatingMessageBox {
+    position: fixed;
+    top: 30px;
+    right: 90px;
+    background: rgb(27, 27, 37);
+    border: 1px solid #ffffff46;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s linear(0 0%, 0 2.27%, 0.02 4.53%, 0.04 6.8%, 0.06 9.07%, 0.1 11.33%, 0.14 13.6%, 0.25 18.15%, 0.39 22.7%, 0.56 27.25%, 0.77 31.8%, 1 36.35%, 0.89 40.9%, 0.85 43.18%, 0.81 45.45%, 0.79 47.72%, 0.77 50%, 0.75 52.27%, 0.75 54.55%, 0.75 56.82%, 0.77 59.1%, 0.79 61.38%, 0.81 63.65%, 0.85 65.93%, 0.89 68.2%, 1 72.7%, 0.97 74.98%, 0.95 77.25%, 0.94 79.53%, 0.94 81.8%, 0.94 84.08%, 0.95 86.35%, 0.97 88.63%, 1 90.9%, 0.99 93.18%, 0.98 95.45%, 0.99 97.73%, 1 100%);
+    transform: translateX(100%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#floatingMessageBox.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.eliminarProducto{
+    margin: 6px;
+}
+
+.product-name {
+    color: #ffffffab;
+    font-weight: bold; 
+}
+
+@keyframes blurOutSlideLeft {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+      filter: blur(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-100%);
+      filter: blur(10px);
+    }
+  }
+
+  .blur-out-slide-left {
+    animation: blurOutSlideLeft 0.5s forwards;
+  } 
+
 
 @media (max-width: 1460px) and (max-height: 1218px) {
     #galeriaProductos {
@@ -1366,6 +1424,80 @@ footer p{
 
     .container {
         display: block;
+    }
+
+    #floatingMessageBox{
+        max-width: 60%;
+        top: 20px;
+    }
+
+    #carritoCompras li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #carritoCompras li span {
+        display: contents;
+        width: 100%;
+        margin: 5px 0;
+        text-align: center;
+    }
+
+    #carritoCompras li img {
+        width: 70px;
+        height: 70px;
+        margin: 10px 0;
+        border-radius: 10px;
+    }
+
+    #carritoCompras li .cantidadContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px 0;
+        width: 100%;
+        position: static; 
+        left: auto; 
+    }
+
+    #carritoCompras li .cantidadContainer label {
+        margin-bottom: 5px;
+        text-align: center;
+        width: 100%;
+    }
+
+    #carritoCompras li .cantidadContainer input {
+        margin-top: 5px;
+        text-align: center;
+        width: 50%;
+        background-color: #1b1b25;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    #carritoCompras li .eliminarProducto {
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+        background: rgb(27, 27, 37);
+        border: 1px solid #ffffff45;
+        color: white;
+        border-radius: 5px;
+        padding: 5px;
+        cursor: pointer;
+    }
+
+    #carritoCompras li .eliminarProducto:hover {
+        color: #ffffffa4;
     }
 
 }

@@ -50,39 +50,73 @@ const renderJugadores = () => {
 const renderCarrito = () => {
     const carritoCompras = document.getElementById('carritoCompras');
     carritoCompras.innerHTML = '';
-    carrito.forEach(producto => {
-        const productoData = productos.find(p => p.nombre === producto.nombre);
-        const li = document.createElement('li');
-        li.style.display = 'flex';
-        li.style.flexDirection = 'column';
-        li.style.alignItems = 'center';
-        li.style.marginBottom = '10px';
-        const nombre = document.createElement('span');
-        nombre.textContent = producto.nombre;
-        const imagen = document.createElement('img');
-        imagen.src = productoData.images[0];
-        imagen.alt = producto.nombre;
-        imagen.style.width = '200px';
-        imagen.style.height = '200px';
-        imagen.style.margin = '5px 0';
-        imagen.style.borderRadius = '10px';
-        const precio = document.createElement('span');
-        precio.textContent = producto.precio;
-        const eliminarBtn = document.createElement('button');
-        eliminarBtn.textContent = 'Eliminar';
-        eliminarBtn.classList.add('eliminarProducto');
-        eliminarBtn.setAttribute('data-nombre', producto.nombre);
-        li.appendChild(nombre);
-        li.appendChild(imagen);
-        li.appendChild(precio);
-        li.appendChild(eliminarBtn);
-        carritoCompras.appendChild(li);
+    carrito.forEach((producto, index) => {
+      const productoData = productos.find(p => p.nombre === producto.nombre);
+      const li = document.createElement('li');
+      li.style.display = 'flex';
+      li.style.justifyContent = 'space-around';
+      li.style.alignItems = 'center';
+      li.style.marginBottom = '10px';
+      li.setAttribute('data-nombre', producto.nombre); // Add this line
+      
+      const nombre = document.createElement('span');
+      nombre.textContent = producto.nombre;
+  
+      const imagen = document.createElement('img');
+      imagen.src = productoData.images[0];
+      imagen.alt = producto.nombre;
+      imagen.style.width = '100px';
+      imagen.style.height = '100px';
+      imagen.style.margin = '5px 0';
+      imagen.style.borderRadius = '10px';
+  
+      const precio = document.createElement('span');
+      precio.textContent = producto.precio;
+  
+      const cantidadLabel = document.createElement('label');
+      cantidadLabel.textContent = 'Cantidad:';
+      cantidadLabel.style.margin = '10px 0';
+  
+      const cantidadInput = document.createElement('input');
+      cantidadInput.type = 'number';
+      cantidadInput.value = producto.cantidad || 1;
+      cantidadInput.min = 1;
+      cantidadInput.style.width = '70px';
+      cantidadInput.style.margin = '5px 0';
+      cantidadInput.style.backgroundColor = '#1b1b25'; 
+      cantidadInput.style.color = 'white';
+      cantidadInput.addEventListener('change', () => updateCantidadProducto(index, cantidadInput.value));
+  
+      const cantidadContainer = document.createElement('div');
+      cantidadContainer.style.display = 'flex';
+      cantidadContainer.style.flexDirection = 'column';
+      cantidadContainer.style.alignItems = 'center';
+      cantidadContainer.appendChild(cantidadLabel);
+      cantidadContainer.appendChild(cantidadInput);
+  
+      const eliminarBtn = document.createElement('button');
+      eliminarBtn.textContent = 'Eliminar';
+      eliminarBtn.classList.add('eliminarProducto');
+      eliminarBtn.setAttribute('data-nombre', producto.nombre);
+      eliminarBtn.addEventListener('click', () => eliminarProducto(producto.nombre));
+  
+      li.appendChild(nombre);
+      li.appendChild(imagen);
+      li.appendChild(precio);
+      li.appendChild(cantidadContainer);
+      li.appendChild(eliminarBtn);
+      
+      carritoCompras.appendChild(li);
     });
-    console.log("Carrito renderizado:", carrito);
     calcularTotal();
     actualizarCantidadCarrito();
-};
+  };
 
+const updateCantidadProducto = (index, cantidad) => {
+    carrito[index].cantidad = parseInt(cantidad, 10);
+    guardarDatos();
+    renderCarrito();
+};
 // Funciones de jugadores
 const agregarJugador = (nombre, edad) => {
     if (edad < 10 || edad > 50) {
@@ -140,34 +174,47 @@ const agregarAlCarrito = (id) => {
         carrito.push(producto);
         guardarDatos();
         renderCarrito();
-        mostrarMensajeCarrito(producto.nombre);
+        showFloatingMessage(`El producto <span class="product-name">${producto.nombre}</span> ha sido añadido al carrito.`);
         console.log(`Producto añadido al carrito: ${producto.nombre}`);
     }
 };
 
-const mostrarMensajeCarrito = (productoNombre) => {
-    Swal.fire({
-        title: "Producto añadido",
-        text: `El producto ${productoNombre} ha sido añadido al carrito.`,
-        icon: "success",
-        confirmButtonText: "Cerrar"
-    });
-    console.log("Modal de producto añadido mostrado");
+const showFloatingMessage = (message) => {
+    const messageBox = document.getElementById('floatingMessageBox');
+    messageBox.innerHTML = message; 
+    messageBox.classList.add('show');
+    setTimeout(() => {
+        messageBox.classList.remove('show');
+    }, 3000);
 };
 
 const eliminarProducto = (nombre) => {
     const index = carrito.findIndex(producto => producto.nombre === nombre);
     if (index !== -1) {
-        let producto = carrito.splice(index, 1)[0];
-        guardarDatos();
-        renderCarrito();
-        console.log(`Producto eliminado del carrito: ${producto.nombre}`);
+      const carritoCompras = document.getElementById('carritoCompras');
+      const li = carritoCompras.querySelector(`li[data-nombre="${nombre}"]`);
+      
+      if (li) {
+        // Add the animation class
+        li.classList.add('blur-out-slide-left');
+        
+        // Wait for the animation to finish before removing the item
+        li.addEventListener('animationend', () => {
+          carrito.splice(index, 1);
+          guardarDatos();
+          renderCarrito();
+        });
+      }
     }
-};
+  };
 
 const calcularTotal = () => {
     const totalCarrito = document.getElementById('totalCarrito');
-    const total = carrito.reduce((acc, producto) => acc + parseFloat(producto.precio.replace('$', '').replace('.', '')), 0);
+    const total = carrito.reduce((acc, producto) => {
+        const precioUnitario = parseFloat(producto.precio.replace('$', '').replace('.', ''));
+        const cantidad = producto.cantidad || 1;
+        return acc + (precioUnitario * cantidad);
+    }, 0);
     const formattedTotal = total.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 2 });
     totalCarrito.textContent = `Total: ${formattedTotal}`;
     console.log(`Total del carrito calculado: ${formattedTotal}`);
@@ -477,7 +524,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const API_URL = 'https://api.football-data.org/v4/persons';
 const API_KEY = '2ef160e804144023b112f264054518fc';
 
-// Función para crear tarjetas de jugadores
+// Función para mostrar jugadores
 const createPlayerCard = (player) => {
     const playerCard = document.createElement('div');
     playerCard.innerHTML = `
@@ -605,7 +652,7 @@ function initializeGame(players) {
         setTimeout(() => {
             firstCard.querySelector('img').classList.remove('jello-vertical');
             secondCard.querySelector('img').classList.remove('jello-vertical');
-        }, 900); // Duration of the jello-vertical animation
+        }, 900); 
 
         matchedPairs++;
         if (matchedPairs === quarterPlayers.length) {
